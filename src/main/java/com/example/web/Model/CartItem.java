@@ -125,7 +125,4 @@ public class CartItem {
 		this.sizeId = sizeId;
 		this.sizes = sizes;
 	}
-
-	
-	
 }

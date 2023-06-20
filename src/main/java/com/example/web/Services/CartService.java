@@ -2,6 +2,7 @@ package com.example.web.Services;
 
 
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -10,15 +11,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.web.Model.CartItem;
+import com.example.web.Model.Order;
+import com.example.web.Model.OrderItem;
 import com.example.web.Model.Product;
 import com.example.web.Model.Size;
 import com.example.web.Model.User;
 import com.example.web.Repositories.CartItemRepository;
+import com.example.web.Repositories.OrderRepository;
 
 
 @Service
 public class CartService { 
 	
+	@Autowired
+    private OrderRepository orderRepository;
+    
 	@Autowired
     private CartItemRepository cartItemRepository;
 	
