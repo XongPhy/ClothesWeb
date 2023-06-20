@@ -20,9 +20,16 @@ body {
 		<div class="row">
 			<div class="col-12">
 				<h1 class="text-center">Product List</h1>
+<<<<<<< HEAD
 				<div sec:authorize="hasAnyAuthority('CREATER', 'ADMIN')"
 					style="text-align: center; margin-top: 20px;">
 					<a class="btn btn-primary mb-2" href="/products/create">Create New Product</a>
+=======
+				<div sec:authorize="hasAnyAuthority('CREATOR', 'ADMIN')"
+					style="text-align: center; margin-top: 20px;">
+					<a class="btn btn-primary mb-2" href="/products/create">Create
+						New Product</a>
+>>>>>>> d66aa78fad5d4467df30023f4dae1a176b4c0999
 				</div>
 				<br />
 				<form class="mb-3"
@@ -36,6 +43,7 @@ body {
 					</div>
 				</form>
 
+<<<<<<< HEAD
 				<div class="row justify-content-center">
 					<table border="1"
 						class="table table-striped table table-hover table-bordered">
@@ -53,6 +61,9 @@ body {
 							</tr>
 						</thead>
 					</table>
+=======
+				<div class="row">
+>>>>>>> d66aa78fad5d4467df30023f4dae1a176b4c0999
 					<div th:each="product: ${products}"
 						class="col-6 col-md-4 col-lg-3 col-xl-3">
 						<div
@@ -63,11 +74,16 @@ body {
 									th:src="@{${product.imageUrl}}" alt="Product Image"
 									style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; object-fit: cover; width: 100%; height: 100%; border-radius: 20px;" />
 							</div>
+<<<<<<< HEAD
 							
 							<div class="p-4 mb-4">
 								<div>
 									<span th:text="${product.id}">ID</span>
 								</div>
+=======
+
+							<div class="p-4">
+>>>>>>> d66aa78fad5d4467df30023f4dae1a176b4c0999
 								<div>
 									<span th:text="${product.brand}">Brand</span>
 								</div>
@@ -77,11 +93,14 @@ body {
 								<div>
 									<span th:text="${product.price}">Price</span>
 								</div>
+<<<<<<< HEAD
 								<div class="d-flex justify-content-between mt-4">
                 					<div th:each="size: ${product.sizes}">
                     					<span th:text="${size.name}" class="mr-2"></span>
                 					</div>
             					</div>
+=======
+>>>>>>> d66aa78fad5d4467df30023f4dae1a176b4c0999
 							</div>
 
 							<div class="d-flex justify-content-around align-items-center">
