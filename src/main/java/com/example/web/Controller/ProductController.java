@@ -1,6 +1,5 @@
 package com.example.web.Controller;
 
-
 import java.io.IOException;
 import java.security.Principal;
 import java.text.DateFormat;
@@ -26,7 +25,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-
 import com.example.web.Model.Product;
 
 import com.example.web.Services.ProductServices;
@@ -39,42 +37,33 @@ import com.opencsv.bean.StatefulBeanToCsvBuilder;
 import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 
-
 @Configuration
 @Controller
 @RequestMapping("/products")
 public class ProductController {
 	@Autowired
 	private ProductServices services;
-	
+
 //	@Autowired
 //	private CartService cartService;
 //	
 //	@Autowired
 //	private UserService userService;
-	
+
 	@Autowired
 	private SizeService sizeService;
-	
+
 	@GetMapping
-    public String viewProduct(Model model, Principal principal) {
-//    	String username = principal.getName();
-//        User user = userService.findByUsername(username);
-//        List<CartItem> cartItems = cartService.getCartItems(user);
-//        List<Product> lisProduct = services.listAll();
-//        model.addAttribute("products", lisProduct);
-//        model.addAttribute("sizes",sizeService.listAll());
-//		  model.addAttribute("cartItemCount", cartItems.size());	
-//        return "products/index";
+	public String viewProduct(Model model, Principal principal) {
 		return viewAllProduct(model, 1, "id", "asc", " ");
-    }
-	
+	}
+
 	@GetMapping("/page/{pageNum}")
 	public String viewAllProduct(Model model, @PathVariable(name = "pageNum") int pageNum,
 			@Param("sortField") String sortField, @Param("sortType") String sortType,
 			@Param("keyword") String keyword) {
-		sortField = sortField==null?"id":sortField;
-		sortType = sortType==null?"asc":sortType;
+		sortField = sortField == null ? "id" : sortField;
+		sortType = sortType == null ? "asc" : sortType;
 		Page<Product> page = services.listAllWithOutDelete(pageNum, sortField, sortType, keyword);
 		List<Product> listProduct = page.getContent();
 		model.addAttribute("currentPage", pageNum);
@@ -87,55 +76,54 @@ public class ProductController {
 		model.addAttribute("products", listProduct);
 		return "products/index";
 	}
-	
-	
+
 	@GetMapping("/create")
 	public String Create(Model model) {
 		Product product = new Product();
 		model.addAttribute("product", product);
-		model.addAttribute("sizes",sizeService.listAll());
+		model.addAttribute("sizes", sizeService.listAll());
 		return "products/create";
 	}
-	
+
 	@PostMapping("/save")
-	public String saveProduct(@ModelAttribute("product") Product product, @RequestParam("image") MultipartFile imageFile) throws IOException {	
+	public String saveProduct(@ModelAttribute("product") Product product,
+			@RequestParam("image") MultipartFile imageFile) throws IOException {
 		String fileName = StringUtils.cleanPath(imageFile.getOriginalFilename());
 		product.setImageUrl(fileName);
 		Product saveProduct = services.save(product);
-		if (!imageFile.getOriginalFilename().isBlank())
-        {
-            String uploadDir = "photos/" + saveProduct.getId();
-            FileUploadUtil.saveFile(uploadDir, fileName, imageFile);
-        }
-	    
-	    return "redirect:/products";
+		if (!imageFile.getOriginalFilename().isBlank()) {
+			String uploadDir = "photos/" + saveProduct.getId();
+			FileUploadUtil.saveFile(uploadDir, fileName, imageFile);
+		}
+
+		return "redirect:/products";
 	}
-	
+
 	@GetMapping("/edit/{id}")
 	public String showEditProductPage(@PathVariable("id") Long id, Model model) {
 		Product product = services.get(id);
-		
-		if(product==null) {
+
+		if (product == null) {
 			return "not-found";
-		}else {
-			model.addAttribute("sizes",sizeService.listAll());
-			model.addAttribute("product",product);
+		} else {
+			model.addAttribute("sizes", sizeService.listAll());
+			model.addAttribute("product", product);
 			return "products/edit";
 		}
 	}
-	
+
 	@GetMapping("/delete/{id}")
 	public String deleteProduct(@PathVariable("id") Long id) {
 		Product product = services.get(id);
-		
-		if(product==null) {
+
+		if (product == null) {
 			return "not-found";
-		}else {
+		} else {
 			services.delete(id);
 			return "redirect:/products";
 		}
 	}
-	
+
 	@GetMapping("/export/{pageNum}")
 	public void exportToCSV(HttpServletResponse response, @PathVariable(name = "pageNum") int pageNum)
 			throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
