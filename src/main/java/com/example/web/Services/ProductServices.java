@@ -16,7 +16,7 @@ import com.example.web.Repositories.ProductRepository;
 @Transactional
 public class ProductServices {
 	
-	int pageSize = 5;
+	int pageSize = 8;
 	
 	@Autowired
 	private ProductRepository productRepository;
