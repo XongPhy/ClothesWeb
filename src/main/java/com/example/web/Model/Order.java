@@ -1,33 +1,36 @@
 package com.example.web.Model;
 
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "orders")
 public class Order {
-	@Id
+    @Id
+    @Column(name ="order_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "order_id")
     private Long id;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
-
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
-    private List<OrderItem> orderItems;
-
+    
+    private String name;
+    
+    private String brand;
+    
+    private Long price;
+    
+    private int quantity;
+    
+    private String imageUrl;
+    
+    private Long total;
+    
+    private Long userId;
+    private Long productId;
+    
 	public Long getId() {
 		return id;
 	}
@@ -36,20 +39,53 @@ public class Order {
 		this.id = id;
 	}
 
-	public User getUser() {
-		return user;
+	public String getName() {
+		return name;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public List<OrderItem> getOrderItems() {
-		return orderItems;
+	public String getBrand() {
+		return brand;
 	}
 
-	public void setOrderItems(List<OrderItem> orderItems) {
-		this.orderItems = orderItems;
+	public void setBrand(String brand) {
+		this.brand = brand;
+	}
+
+	public Long getPrice() {
+		return price;
+	}
+
+	public void setPrice(Long price) {
+		this.price = price;
+	}
+
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+
+	public Long getTotal() {
+		return total;
+	}
+
+	public void setTotal(Long total) {
+		this.total = total;
 	}
 
 	public Order() {
@@ -57,12 +93,20 @@ public class Order {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Order(Long id, User user, List<OrderItem> orderItems) {
-		super();
-		this.id = id;
-		this.user = user;
-		this.orderItems = orderItems;
+	public Long getUserId() {
+		return userId;
 	}
-    
-    
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
+
+	public Long getProductId() {
+		return productId;
+	}
+
+	public void setProductId(Long productId) {
+		this.productId = productId;
+	}
+ 
 }

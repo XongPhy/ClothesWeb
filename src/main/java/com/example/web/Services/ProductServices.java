@@ -16,7 +16,7 @@ import com.example.web.Repositories.ProductRepository;
 @Transactional
 public class ProductServices {
 	
-	int pageSize = 5;
+	int pageSize = 6;
 	
 	@Autowired
 	private ProductRepository productRepository;
@@ -25,11 +25,6 @@ public class ProductServices {
 		Pageable pageable = PageRequest.of(pageNum - 1, pageSize);
 		return productRepository.findAll(pageable);
 	}
-	
-//	public List<Product> listAll() {
-//		return productRepository.findAll();
-//	}
-	
 	
 	public Page<Product> listAllWithOutDelete(int pageNum, String sortField, String sortType, String keyword) {
 		Pageable pageable = PageRequest.of(pageNum - 1, pageSize,

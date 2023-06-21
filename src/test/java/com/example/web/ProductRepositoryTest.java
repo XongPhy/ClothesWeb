@@ -90,6 +90,85 @@ public class ProductRepositoryTest {
 		product3.setSizes(Arrays.asList(sizeM, sizeL, sizeXL,sizeXXL));
 		productRepository.save(product3);
 		
+		Product product4 = new Product();
+		product4.setName("COMET TEE - BLACK");	
+		product4.setBrand("NowSaiGon");
+		product4.setPrice((long) 110000);
+		product4.setSizes(Arrays.asList(sizeM, sizeL, sizeXL,sizeXXL));
+		productRepository.save(product4);
+		
+		Product product5 = new Product();
+		product5.setName("Windbreaker Jacket");	
+		product5.setBrand("DirtyCoins");
+		product5.setPrice((long) 140000);
+		product5.setSizes(Arrays.asList(sizeM, sizeL, sizeXL,sizeXXL));
+		productRepository.save(product5);
+		
+		Product product6 = new Product();
+		product6.setName("BLACK SPLATTER HOODIE");	
+		product6.setBrand("Fragile");
+		product6.setPrice((long) 180000);
+		product6.setSizes(Arrays.asList(sizeM, sizeL, sizeXL,sizeXXL));
+		productRepository.save(product6);
+		
+		Product product7 = new Product();
+		product7.setName("DORAEMON ZIPPER HOODIE");	
+		product7.setBrand("Levents");
+		product7.setPrice((long) 120000);
+		product7.setSizes(Arrays.asList(sizeM, sizeL, sizeXL,sizeXXL));
+		productRepository.save(product7);
+		
+		Product product8 = new Product();
+		product8.setName("POPPOP JACKET");	
+		product8.setBrand("Levents");
+		product8.setPrice((long) 170000);
+		product8.setSizes(Arrays.asList(sizeM, sizeL, sizeXL,sizeXXL));
+		productRepository.save(product8);
+		
+		Product product9 = new Product();
+		product9.setName("PLAY LOGO SHORTPANT");	
+		product9.setBrand("Levents");
+		product9.setPrice((long) 80000);
+		product9.setSizes(Arrays.asList(sizeM, sizeL, sizeXL,sizeXXL));
+		productRepository.save(product9);
+		
+		Product product10 = new Product();
+		product10.setName("DOUBLE E BACKPACK");	
+		product10.setBrand("Levents");
+		product10.setPrice((long) 40000);
+		product10.setSizes(Arrays.asList(sizeM, sizeL, sizeXL,sizeXXL));
+		productRepository.save(product10);
+		
+		Product product11 = new Product();
+		product11.setName("POPPOP FRIENDS TEE");	
+		product11.setBrand("Levents");
+		product11.setPrice((long) 60000);
+		product11.setSizes(Arrays.asList(sizeM, sizeL, sizeXL,sizeXXL));
+		productRepository.save(product11);
+		
+		Product product12 = new Product();
+		product12.setName("POPPOP TOY WASH TEE");	
+		product12.setBrand("Levents");
+		product12.setPrice((long) 280000);
+		product12.setSizes(Arrays.asList(sizeM, sizeL, sizeXL,sizeXXL));
+		productRepository.save(product12);
+		
+		Product product13 = new Product();
+		product13.setName("MINI POPULAR POLO");	
+		product13.setBrand("Levents");
+		product13.setPrice((long) 230000);
+		product13.setSizes(Arrays.asList(sizeM, sizeL, sizeXL,sizeXXL));
+		productRepository.save(product13);
+		
+		Product product14 = new Product();
+		product14.setName("BASIC CAP");	
+		product14.setBrand("Levents");
+		product14.setPrice((long) 130000);
+		product14.setSizes(Arrays.asList(sizeM, sizeL, sizeXL,sizeXXL));
+		productRepository.save(product14);
+		
+		
+		
 		Role roleUser = new Role();
 		roleUser.setName("USER");
 		roleRepository.save(roleUser);
